@@ -4,7 +4,15 @@ const bodyParser = require('body-parser')
 const app = express()
 const port = 3000
 const generateTrashTalk = require('./generate_trashTalk')
-
+//自訂helpers
+const Handlebars = require("handlebars")
+Handlebars.registerHelper('same', function(a, b, options){
+    if (a === b){
+        return options.fn(this)
+    } else {
+        return options.inverse(this)
+    }
+})
 
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))

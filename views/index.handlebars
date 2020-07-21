@@ -15,7 +15,7 @@
             height="280">
           <div class="card-body">
             <div class="form-check text-center">
-              <input class="form-check-input" type="radio" name="engineer" id="engineer" value="engineer">
+              <input class="form-check-input" type="radio" name="engineer" id="engineer" value="engineer" {{#same occupationString 'engineer'}} checked {{/same}}>
               <label class="form-check-label" for="engineer">
                 Engineer
               </label>
@@ -30,7 +30,7 @@
             height="280">
           <div class="card-body">
             <div class="form-check text-center">
-              <input class="form-check-input" type="radio" name="designer" id="designer" value="designer">
+              <input class="form-check-input" type="radio" name="designer" id="designer" value="designer {{#same occupationString 'designer'}} checked {{/same}}">
               <label class="form-check-label" for="designer">
                 Designer
               </label>
@@ -45,7 +45,7 @@
             height="280">
           <div class="card-body">
             <div class="form-check text-center">
-              <input class="form-check-input" type="radio" name="entrepreneur" id="entrepreneur" value="entrepreneur">
+              <input class="form-check-input" type="radio" name="entrepreneur" id="entrepreneur" value="entrepreneur" {{#same occupationString 'entrepreneur'}} checked {{/same}}>
               <label class="form-check-label" for="entrepreneur">
                 Entrepreneur
               </label>
