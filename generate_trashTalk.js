@@ -17,10 +17,13 @@ function generateTrashTalk(occupation){
       }
       
     const phrase = ['很簡單','很容易','很快','很正常']
-
+    let occupationString = Object.keys(occupation).join()
+    
     let collection = ''
     if (occupation){
-        return collection += `${target[occupation]}，${generateRandomItem(task[occupation])}，${generateRandomItem(phrase)}吧！`
+        return collection += `${target[occupationString]}，
+        ${generateRandomItem(task[occupationString])}，
+        ${generateRandomItem(phrase)}吧！`
     } else {
         return `choose one occupation to talk shit to!`
     }

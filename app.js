@@ -5,6 +5,7 @@ const app = express()
 const port = 3000
 const generateTrashTalk = require('./generate_trashTalk')
 
+
 // setting template engine
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
 app.set('view engine', 'handlebars')
@@ -20,7 +21,8 @@ app.get('/', (req, res) => {
   app.post('/', (req, res) => {
     const occupation = req.body
     const trashTalk = generateTrashTalk(occupation)
-    res.render('index', { trashtalk, occupation})
+    const occupationString = Object.keys(occupation).join()
+    res.render('index', { trashTalk, occupation, occupationString})
   })
 
   app.use(express.static('public'))
