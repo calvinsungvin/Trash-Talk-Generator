@@ -6,12 +6,8 @@ const port = 3000
 const generateTrashTalk = require('./generate_trashTalk')
 //自訂helpers
 const Handlebars = require("handlebars")
-Handlebars.registerHelper('same', function(a, b, options){
-    if (a === b){
-        return options.fn(this)
-    } else {
-        return options.inverse(this)
-    }
+Handlebars.registerHelper('same', function(a, b){
+  return (a === b) ? "checked": ""
 })
 
 // setting template engine
@@ -27,10 +23,8 @@ app.get('/', (req, res) => {
   })
   
   app.post('/', (req, res) => {
-    const occupation = req.body
-    const trashTalk = generateTrashTalk(occupation)
-    const occupationString = Object.keys(occupation).join()
-    res.render('index', { trashTalk, occupation, occupationString})
+    const trashTalk = generateTrashTalk(req.body)
+    res.render('index', { trashTalk, radioChecked: req.body.job})
   })
 
   app.use(express.static('public'))
