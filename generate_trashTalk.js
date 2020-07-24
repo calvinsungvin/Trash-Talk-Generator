@@ -3,12 +3,7 @@ function generateRandomItem(array) {
     return array[index]
   }
 
-function generateTrashTalk(occupation){
-    const target = {
-        engineer: "工程師",
-        designer: "設計師",
-        entrepreneur: "創業家"
-    }
+function generateTrashTalk(job){
 
     const task = {
         engineer: ['加個按鈕','加新功能','切個版', '改一點 code'],
@@ -17,19 +12,14 @@ function generateTrashTalk(occupation){
       }
       
     const phrase = ['很簡單','很容易','很快','很正常']
-    
-    //turning occupation(an object) first into an array then string
-    let occupationString = Object.keys(occupation).join()
-    
-    let collection = ''
+    let collection = ""
 
-    if (occupation){
-        return collection += `${target[occupationString]}，
-        ${generateRandomItem(task[occupationString])}，
-        ${generateRandomItem(phrase)}吧！`
-    } else {
-        return `choose one occupation to talk shit to!`
-    }
+    if (!job) return "Please choose one!"
+    else if (job === 'engineer') collection += '工程師' + generateRandomItem(task.engineer) + generateRandomItem(phrase)
+    else if (job === 'designer') collection += '設計師' + generateRandomItem(task.designer) + generateRandomItem(phrase)
+    else if (job === 'entrepreneur') collection += '創業家' + generateRandomItem(task.entrepreneur) + generateRandomItem(phrase)
+
+    return collection
 }
 
 module.exports = generateTrashTalk

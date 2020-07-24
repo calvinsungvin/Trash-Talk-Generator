@@ -23,8 +23,9 @@ app.get('/', (req, res) => {
   })
   
   app.post('/', (req, res) => {
-    const trashTalk = generateTrashTalk(req.body)
-    res.render('index', { trashTalk, radioChecked: req.body.job})
+    console.log(req.body.job)
+    // console.log(generateTrashTalk(req.body.job))
+    res.render('index', { trashTalk: generateTrashTalk(req.body.job) , radioChecked: req.body.job})
   })
 
   app.use(express.static('public'))
